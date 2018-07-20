@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -23,6 +23,9 @@ import { DetalleComponent } from './ingreso-egreso/detalle/detalle.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { OrdenIngresoEgresoPipe } from './ingreso-egreso/orden-ingreso-egreso.pipe';
+
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrdenIngresoEgresoPipe
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    ChartsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
